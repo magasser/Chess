@@ -1,18 +1,13 @@
-#ifndef BOARD_H
-#define BOARD_H
-
 #include "board.h"
 
 #include "core.h"
 
-void init_piece(Piece *piece, PieceKind kind, PieceColor color, uint8_t tileX, uint8_t tileY);
+void init_piece(PieceState *piece, PieceKind kind, PieceColor color, uint8_t rank, uint8_t file);
 
 Board *create_board() {
     Board *board = (Board *)malloc(sizeof(Board));
 
-    board->pieceCount = 32;
-
-    board->pieces = (Piece *)malloc(sizeof(Piece) * board->pieceCount);
+    board->pieces = (PieceState *)malloc(sizeof(PieceState) * BOARD_PIECE_COUNT);
 
     // Black pieces
     init_piece(&board->pieces[0], ROOK, BLACK, 1, 1);
@@ -53,15 +48,15 @@ Board *create_board() {
     return board;
 }
 
-void init_piece(Piece *piece, PieceKind kind, PieceColor color, uint8_t tileX, uint8_t tileY) {
-    piece->kind = kind;
-    piece->color = color;
-    piece->rank = tileX;
-    piece->file = tileY;
+void init_piece(PieceState *piece, PieceKind kind, PieceColor color, uint8_t rank, uint8_t file) {
+    piece->piece.kind = kind;
+    piece->piece.color = color;
+    piece->rank = rank;
+    piece->file = file;
+    piece->isAlive = 1;
 }
 
 void free_board(Board *board) {
-
+    free(board->pieces);
+    free(board);
 }
-
-#endif

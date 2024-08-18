@@ -18,8 +18,6 @@ typedef enum {
 typedef struct {
     PieceKind kind;
     PieceColor color;
-    uint8_t rank;
-    uint8_t file;
 } Piece;
 
 #endif

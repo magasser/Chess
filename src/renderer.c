@@ -9,7 +9,7 @@
 char *get_piece_asset(Piece *piece);
 SDL_Texture *create_piece_texture(SDL_Renderer *renderer, Piece *piece);
 void render_tiles(SDL_Renderer *renderer, uint32_t tileSize, SDL_Point topLeft);
-void render_pieces(SDL_Renderer *renderer, uint32_t tileSize, Piece *pieces, uint8_t count, SDL_Point topLeft);
+void render_pieces(SDL_Renderer *renderer, uint32_t tileSize, PieceState *pieces, uint8_t count, SDL_Point topLeft);
 
 void render_board(SDL_Window *window, Board *board) {
 
@@ -24,7 +24,7 @@ void render_board(SDL_Window *window, Board *board) {
     SDL_Renderer *renderer = SDL_GetRenderer(window);
 
     render_tiles(renderer, TILE_SIZE, topLeft);
-    render_pieces(renderer, TILE_SIZE, board->pieces, board->pieceCount, topLeft);
+    render_pieces(renderer, TILE_SIZE, board->pieces, BOARD_PIECE_COUNT, topLeft);
 }
 
 void render_tiles(SDL_Renderer *renderer, uint32_t tileSize, SDL_Point topLeft) {
@@ -45,10 +45,14 @@ void render_tiles(SDL_Renderer *renderer, uint32_t tileSize, SDL_Point topLeft) 
     }
 }
 
-void render_pieces(SDL_Renderer *renderer, uint32_t tileSize, Piece *pieces, uint8_t count, SDL_Point topLeft) {
+void render_pieces(SDL_Renderer *renderer, uint32_t tileSize, PieceState *pieces, uint8_t count, SDL_Point topLeft) {
     for (uint8_t i = 0; i < count; i++) {
+        if (!pieces[i].isAlive) {
+            continue;
+        }
+
         // TODO: Improve texture management to avoid allocations
-        SDL_Texture *texture = create_piece_texture(renderer, &pieces[i]);
+        SDL_Texture *texture = create_piece_texture(renderer, &pieces[i].piece);
 
         SDL_Rect pieceRect = {
             topLeft.x + tileSize * (pieces[i].rank - 1),
