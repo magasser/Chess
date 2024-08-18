@@ -1,6 +1,6 @@
-#include <stdio.h>
+#include "game.h"
 
 int main(void) {
-    printf("Hello Chess");
+    run();
     return 0;
 }
