@@ -13,7 +13,7 @@ typedef struct {
     uint32_t length;
 } Array;
 
-Array* create_array(size_t itemSize, uint32_t length);
+Array* create_array(size_t item_size, uint32_t length);
 void destroy_array(Array* array);
 
 #endif

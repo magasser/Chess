@@ -11,7 +11,7 @@ Renderer* create_renderer(Window* window) {
     Renderer* renderer = (Renderer*)malloc(sizeof(Renderer));
 
     renderer->window = window;
-    renderer->renderer = SDL_CreateRenderer(renderer->window->window, -1, SDL_RENDERER_SOFTWARE);
+    renderer->renderer = SDL_CreateRenderer(renderer->window->window, -1, SDL_RENDERER_ACCELERATED);
 
     if (!renderer->renderer) {
         free(renderer);

@@ -7,7 +7,7 @@
 #include "UI/renderer.h"
 
 
-int main(int argc, char* argv[]) {
+int main(void) {
     if (ui_init() < 0) {
         char error[200];
         ui_get_error(error, 200);
@@ -38,9 +38,7 @@ int main(int argc, char* argv[]) {
 
     GameContext* game = create_game();
 
-    while (1) {
-        printf("do it");
-    }
+    // TODO: Game loop
 
     destroy_game(game);
     destroy_renderer(renderer);

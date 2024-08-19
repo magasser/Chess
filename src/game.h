@@ -18,8 +18,8 @@ typedef struct {
 
 typedef struct {
     GameScene scene;
-    MenuContext menuContext;
-    ChessContext chessContext;
+    MenuContext menu_context;
+    ChessContext chess_context;
 } GameContext;
 
 GameContext* create_game();
