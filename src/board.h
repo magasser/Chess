@@ -14,11 +14,11 @@ typedef struct {
 } PieceState;
 
 typedef struct {
-    PieceState *pieces;
+    PieceState* pieces;
 } Board;
 
-Board *create_board();
+Board* create_board();
 
-void free_board(Board *board);
+void free_board(Board* board);
 
 #endif

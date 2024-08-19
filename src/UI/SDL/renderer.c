@@ -1,12 +1,33 @@
-#include "renderer.h"
+#include "UI/renderer.h"
 
+#include <SDL2/SDL.h>
 #include <SDL_image.h>
 
 #include "asset.h"
 
 #define TILE_SIZE 60
 
-char *get_piece_asset(Piece *piece);
+Renderer* create_renderer(Window* window) {
+    Renderer* renderer = (Renderer*)malloc(sizeof(Renderer));
+
+    renderer->window = window;
+    renderer->renderer = SDL_CreateRenderer(renderer->window->window, -1, SDL_RENDERER_SOFTWARE);
+
+    if (!renderer->renderer) {
+        free(renderer);
+        return NULL;
+    }
+
+    return renderer;
+}
+
+void destroy_renderer(Renderer* renderer) {
+    SDL_DestroyRenderer(renderer->renderer);
+    free(renderer);
+}
+
+
+/*char *get_piece_asset(Piece *piece);
 SDL_Texture *create_piece_texture(SDL_Renderer *renderer, Piece *piece);
 void render_tiles(SDL_Renderer *renderer, uint32_t tileSize, SDL_Point topLeft);
 void render_pieces(SDL_Renderer *renderer, uint32_t tileSize, PieceState *pieces, uint8_t count, SDL_Point topLeft);
@@ -62,6 +83,8 @@ void render_pieces(SDL_Renderer *renderer, uint32_t tileSize, PieceState *pieces
         };
 
         SDL_RenderCopy(renderer, texture, NULL, &pieceRect);
+
+        SDL_DestroyTexture(texture);
     }
 }
 
@@ -72,7 +95,7 @@ SDL_Texture *create_piece_texture(SDL_Renderer *renderer, Piece *piece) {
 
     SDL_Texture *texture = IMG_LoadTexture(renderer, pieceAsset);
 
-    if (texture == NULL) {
+    if (!texture) {
         perror("Failed to load texture for piece asset");
         exit(EXIT_FAILURE);
     }
@@ -123,4 +146,4 @@ char *get_piece_asset(Piece *piece) {
     default:
         return get_asset_path("error.svg");
     }
-}
+}*/

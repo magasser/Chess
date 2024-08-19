@@ -6,27 +6,49 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib/${CMAKE_BUILD_TYPE})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib/${CMAKE_BUILD_TYPE})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/${CMAKE_BUILD_TYPE})
 
-#option(DSDL_STATIC "Build the static SDL library" ON)
-#option(DSDL_IMAGE_STATIC "Build the static SDL_image library" ON)
+option(USE_SDL "Use SDL for UI" ON)
+option(USE_CSFML "Use CSFML for UI" OFF)
 
 project(${PROJECT_NAME} C)
 
 set(SOURCES
     src/main.c
     src/game.c
-    src/board.c
-    src/renderer.c)
+    src/board.c)
 
-# Libraries
-add_subdirectory(lib/SDL EXCLUDE_FROM_ALL)
-add_subdirectory(lib/SDL_image EXCLUDE_FROM_ALL)
+include_directories(src)
 
-include_directories(lib/SDL/include 
-                    lib/SDL_image/include)
+if(USE_SDL)
+    list(APPEND SOURCES 
+        src/UI/SDL/ui.c
+        src/UI/SDL/window.c
+        src/UI/SDL/renderer.c)
+elseif(USE_CSFML)
+    list(APPEND SOURCES 
+        src/UI/CSFML/ui.c
+        src/UI/CSFML/window.c
+        src/UI/CSFML/renderer.c)
+endif()
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
+# Libraries
+if(USE_SDL)
+    add_subdirectory(lib/SDL EXCLUDE_FROM_ALL)
+    add_subdirectory(lib/SDL_image EXCLUDE_FROM_ALL)
+elseif(USE_CSFML)
+endif()
+
+if(USE_SDL)
+    include_directories(lib/SDL/include
+                        lib/SDL_image/include)
+elseif(USE_CSFML)
+endif()
     
-target_link_libraries(${PROJECT_NAME} 
-    SDL2::SDL2
-    SDL2_image::SDL2_image)
+
+if(USE_SDL)
+    target_link_libraries(${PROJECT_NAME} 
+        SDL2::SDL2
+        SDL2_image::SDL2_image)
+elseif(USE_CSFML)
+endif()
