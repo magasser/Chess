@@ -2,7 +2,7 @@
 #define PIECE_H
 
 typedef enum {
-    PIECE_KIND_PAWN,
+    PIECE_KIND_PAWN = 1,
     PIECE_KIND_KNIGHT,
     PIECE_KIND_BISHOP,
     PIECE_KIND_ROOK,
@@ -11,7 +11,7 @@ typedef enum {
 } PieceKind;
 
 typedef enum {
-    PIECE_COLOR_BLACK,
+    PIECE_COLOR_BLACK = 1,
     PIECE_COLOR_WHITE
 } PieceColor;
 

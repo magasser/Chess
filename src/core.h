@@ -5,15 +5,13 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include "utils/list.h"
+
 typedef void (*Action)();
 typedef void (*Func1)(void*);
 
 typedef struct {
-    void* items;
-    uint32_t length;
-} Array;
-
-Array* create_array(size_t item_size, uint32_t length);
-void destroy_array(Array* array);
+    uint8_t r, g, b, a;
+} Color;
 
 #endif

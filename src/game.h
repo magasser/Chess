@@ -4,7 +4,7 @@
 #include "board.h"
 
 typedef enum {
-    GAME_SCENE_MENU,
+    GAME_SCENE_MENU = 1,
     GAME_SCENE_CHESS
 } GameScene;
 

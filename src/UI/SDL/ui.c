@@ -3,7 +3,7 @@
 #include <SDL2/SDL.h>
 
 uint32_t ui_init() {
-    return SDL_Init(SDL_INIT_VIDEO);
+    return SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
 }
 
 void ui_quit() {

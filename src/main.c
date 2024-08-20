@@ -1,10 +1,8 @@
 #include <stdio.h>
 
+#include "core.h"
 #include "game.h"
-
 #include "UI/ui.h"
-#include "UI/window.h"
-#include "UI/renderer.h"
 
 
 int main(void) {
@@ -38,7 +36,33 @@ int main(void) {
 
     GameContext* game = create_game();
 
-    // TODO: Game loop
+    Event event;
+    // Test Scene
+    Scene scene = { list_create(1) };
+    Layer test = { list_create(2) };
+
+    list_add(scene.layers, &test);
+
+    Rectangle rect1 = { RENDER_OBJECT_SHAPE, 500, 500, SHAPE_RECTANGLE, {0, 255, 0, 255}, 50, 50 };
+    Rectangle rect2 = { RENDER_OBJECT_SHAPE, 550, 500, SHAPE_RECTANGLE, {0, 0, 255, 255}, 50, 50 };
+
+    list_add(test.objects, &rect1);
+    list_add(test.objects, &rect2);
+
+    while (wait_event(&event)) {
+
+        // TODO: Check if the loop needs to be reversed
+        for (int32_t i = 0; i < scene.layers->count; i++) {
+            /*if (layer_handle_event((Layer*)scene.layers->items[i], &event)) {
+                break;
+            }*/
+        }
+
+        Color clear_color = { 50, 0, 0, 255 };
+        render_begin(renderer, clear_color);
+        render_scene(renderer, &scene);
+        render_end(renderer);
+    }
 
     destroy_game(game);
     destroy_renderer(renderer);

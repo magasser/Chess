@@ -14,7 +14,9 @@ project(${PROJECT_NAME} C)
 set(SOURCES
     src/main.c
     src/game.c
-    src/board.c)
+    src/board.c
+    src/utils/list.c
+    src/UI/renderer.c)
 
 include_directories(src)
 
@@ -22,7 +24,8 @@ if(USE_SDL)
     list(APPEND SOURCES 
         src/UI/SDL/ui.c
         src/UI/SDL/window.c
-        src/UI/SDL/renderer.c)
+        src/UI/SDL/renderer.c
+        src/UI/SDL/event.c)
 elseif(USE_CSFML)
     list(APPEND SOURCES 
         src/UI/CSFML/ui.c
