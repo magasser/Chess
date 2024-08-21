@@ -7,7 +7,7 @@ List* list_create(int32_t capacity) {
 
     list->capacity = capacity;
     list->count = 0;
-    list->items = malloc(sizeof(void*) * capacity);
+    list->items = calloc(capacity, sizeof(void*));
 
     return list;
 }
@@ -78,13 +78,13 @@ void list_for_each(List* list, void (*action)(void*)) {
 }
 
 void list_reallocate(List* list) {
-    int32_t capacity = list->capacity * 1.3f;
+    int32_t capacity = 1 + list->capacity * 1.3f;
 
     if (capacity < list->capacity) {
         capacity = 0xFFFFFFFF;
     }
 
-    void** items = malloc(sizeof(void*) * capacity);
+    void** items = calloc(capacity, sizeof(void*));
 
     for (int32_t i = 0; i < list->count; i++) {
         items[i] = list->items[i];
