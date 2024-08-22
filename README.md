@@ -2,7 +2,7 @@
 
 Before building the project, ensure you have the following installed:
 
-1. **CMake**: Version 3.5 or higher
+1. **CMake**: Version 3.16 or higher
 
    - You can download it from the [CMake website](https://cmake.org/download/) or install it via package managers.
 
