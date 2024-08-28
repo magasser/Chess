@@ -36,3 +36,7 @@ void destory_window(Window* window) {
     SDL_DestroyWindow(window->window);
     free(window);
 }
+
+void get_window_size(const Window* window, uint32_t* width, uint32_t* height) {
+    SDL_GetWindowSize(window->window, width, height);
+}

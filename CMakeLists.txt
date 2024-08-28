@@ -17,9 +17,12 @@ set(SOURCES
     src/main.c
     src/game.c
     src/board.c
+    src/ui/layers/game/board_layer.c
+    src/ui/layers/game/piece_layer.c
+    src/ui/scenes/game_scene.c
 )
 
-include_directories(${PROJECT_NAME} src)
+include_directories(src)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

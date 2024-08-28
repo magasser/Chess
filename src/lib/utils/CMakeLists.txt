@@ -11,7 +11,7 @@ include_directories(include)
 
 set(UTILS_SOURCES src/list.c)
 
-option(UTILS_BUILD_TESTS "Build utils tests" BUILD_TESTS)
+option(UTILS_BUILD_TESTS "Build utils tests" ON)
 
 
 if (UTILS_BUILD_TESTS)

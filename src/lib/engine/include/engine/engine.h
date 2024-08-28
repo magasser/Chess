@@ -10,6 +10,8 @@
 #include "render_object.h"
 #include "renderer.h"
 #include "window.h"
+#include "texture.h"
+#include "geometry/point.h"
 #include "shapes/rectangle.h"
 #include "components/button.h"
 

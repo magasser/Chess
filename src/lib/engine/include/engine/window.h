@@ -22,4 +22,6 @@ typedef struct {
 Window* create_window(const char* title, uint32_t x, uint32_t y, uint32_t width, uint32_t height, WindowFlags flags);
 void destory_window(Window* window);
 
+void get_window_size(const Window* window, uint32_t* width, uint32_t* height);
+
 #endif

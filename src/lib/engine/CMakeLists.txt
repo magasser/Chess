@@ -19,12 +19,14 @@ if(USE_SDL)
         src/SDL/window.c
         src/SDL/renderer.c
         src/SDL/event.c
+        src/SDL/texture.c
     )
 elseif(USE_CSFML)
     list(APPEND ENGINE_SOURCES 
         src/CSFML/ui.c
         src/CSFML/window.c
         src/CSFML/renderer.c
+        src/CSFML/texture.c
     )
 endif()
 

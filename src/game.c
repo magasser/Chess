@@ -5,9 +5,13 @@
 #include "piece.h"
 #include "player.h"
 
-GameContext* create_game() {
-    return NULL;
-}
-void destroy_game(GameContext* context) {
-    free(context);
+#define INIT_PIECE(l, i, k, c, f, r) \
+PieceState state = *((PieceState*)list_get(l, i)); \
+state.kind = k; \
+state.color = c; \
+state.file = f; \
+state.rank = r
+
+void init_game(Game* game) {
+    init_board(&game->game_context.board);
 }

@@ -1,12 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "core.h"
 #include "board.h"
-
-typedef enum {
-    GAME_SCENE_MENU = 1,
-    GAME_SCENE_CHESS
-} GameScene;
 
 typedef struct {
 
@@ -14,15 +10,13 @@ typedef struct {
 
 typedef struct {
     Board board;
-} ChessContext;
-
-typedef struct {
-    GameScene scene;
-    MenuContext menu_context;
-    ChessContext chess_context;
 } GameContext;
 
-GameContext* create_game();
-void destroy_game(GameContext* context);
+typedef struct {
+    MenuContext menu_context;
+    GameContext game_context;
+} Game;
+
+void init_game(Game* game);
 
 #endif
