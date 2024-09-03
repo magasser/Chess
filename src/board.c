@@ -70,3 +70,9 @@ PieceState* get_piece_on_square(const Board* board, uint8_t rank, uint8_t file) 
 uint8_t has_piece_on_square(const Board* board, uint8_t rank, uint8_t file) {
     return get_piece_on_square(board, rank, file) != NULL;
 }
+
+uint8_t has_piece_color_on_square(const Board* board, uint8_t rank, uint8_t file, PieceColor color) {
+    PieceState* piece = get_piece_on_square(board, rank, file);
+
+    return piece && piece->piece.color == color;
+}

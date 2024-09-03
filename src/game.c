@@ -6,7 +6,7 @@
 #include "player.h"
 
 static void game_move_piece(GameContext* context, Move move);
-static uint8_t game_capture_piece(const GameContext* context, const Move move);
+static void game_capture_piece(const GameContext* context, PieceState* piece);
 static void game_promote_pawn(PieceState* pawn);
 
 void init_game(Game* game) {
@@ -23,12 +23,14 @@ void init_game(Game* game) {
 }
 
 static void game_move_piece(GameContext* context, Move move) {
+    PieceState* capturable = get_piece_on_square(&context->board, move.new_rank, move.new_file);
+
     if (!move_piece(&context->board, &move)) {
         return;
     }
 
-    if (game_capture_piece(context, &move)) {
-        // Handle capture logic
+    if (capturable) {
+        game_capture_piece(context, capturable);
     }
 
     Move* m = (Move*)malloc(sizeof(Move));
@@ -39,12 +41,6 @@ static void game_move_piece(GameContext* context, Move move) {
     context->color_turn = context->color_turn == PIECE_COLOR_WHITE ? PIECE_COLOR_BLACK : PIECE_COLOR_WHITE;
 }
 
-static uint8_t game_capture_piece(const GameContext* context, const Move* move) {
-    PieceState* captured = get_piece_on_square(board, move->new_rank, move->new_file);
-    if (captured != NULL) {
-        captured->is_alive = 0;
-        return 1;
-    }
-
-    return 0;
+static void game_capture_piece(const GameContext* context, PieceState* piece) {
+    piece->is_alive = 0;
 }

@@ -30,6 +30,12 @@ void list_add(List* list, void* value) {
     list->count = count;
 }
 
+void list_add_range(List* list, List* other) {
+    for (int32_t i = 0; i < other->count; i++) {
+        list_add(list, other->items[i]);
+    }
+}
+
 uint8_t list_remove(List* list, void* value) {
     int32_t index = list_index_of(list, value);
 

@@ -8,4 +8,6 @@
 #include <utils/list.h>
 #include <utils/action.h>
 
+#define NUM_IN_RANGE(x, min, max) ((x) >= (min) && (x) <= (max))
+
 #endif

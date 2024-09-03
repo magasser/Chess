@@ -13,6 +13,7 @@ List* list_create(int32_t capacity);
 void list_destroy(List* list);
 
 void list_add(List* list, void* value);
+void list_add_range(List* list, List* other);
 uint8_t list_remove(List* list, void* value);
 void list_clear(List* list);
 

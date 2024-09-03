@@ -8,9 +8,15 @@
 #define BOARD_PIECE_COUNT 32
 
 typedef struct {
-    Piece piece;
-    uint8_t rank;
     uint8_t file;
+    uint8_t rank;
+} Square;
+
+// TODO: Rework to use square
+typedef struct {
+    Piece piece;
+    uint8_t file;
+    uint8_t rank;
     uint8_t is_alive;
 } PieceState;
 
@@ -24,5 +30,6 @@ void init_board(Board* board);
 
 PieceState* get_piece_on_square(const Board* board, uint8_t rank, uint8_t file);
 uint8_t has_piece_on_square(const Board* board, uint8_t rank, uint8_t file);
+uint8_t has_piece_color_on_square(const Board* board, uint8_t rank, uint8_t file, PieceColor color);
 
 #endif
