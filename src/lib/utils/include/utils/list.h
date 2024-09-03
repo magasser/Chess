@@ -14,11 +14,12 @@ void list_destroy(List* list);
 
 void list_add(List* list, void* value);
 uint8_t list_remove(List* list, void* value);
+void list_clear(List* list);
 
 void* list_get(List* list, int32_t index);
 void list_set(List* list, int32_t index, void* value);
 
-int32_t list_index_of(List* list, void* value);
+int32_t list_index_of(List* list, const void* value);
 
 void list_foreach(List* list, void (*action)(void*));
 

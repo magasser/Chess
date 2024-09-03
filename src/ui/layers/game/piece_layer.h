@@ -4,13 +4,13 @@
 #include <engine/engine.h>
 
 #include "core.h"
-#include "board.h"
+#include "game.h"
 
 typedef struct {
     Layer layer;
-    const Board* board;
+    GameContext* game;
 } PieceLayer;
 
-PieceLayer* create_piece_layer(Renderer* renderer, const Board* board);
+PieceLayer* create_piece_layer(Renderer* renderer, GameContext* board);
 
 #endif

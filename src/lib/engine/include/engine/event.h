@@ -19,6 +19,7 @@ typedef struct {
 
 typedef struct {
     EventType type;
+    uint32_t window_id;
     uint8_t repeat;
 } KeyEvent;
 
@@ -31,6 +32,7 @@ typedef enum {
 
 typedef struct {
     EventType type;
+    uint32_t window_id;
     MouseButton button;
     uint8_t clicks;
     uint8_t pressed;
@@ -40,6 +42,7 @@ typedef struct {
 
 typedef struct {
     EventType type;
+    uint32_t window_id;
     uint8_t pressed;
     int32_t x;
     int32_t y;
@@ -49,6 +52,7 @@ typedef struct {
 
 typedef struct {
     EventType type;
+    uint32_t window_id;
     int32_t x;
     int32_t y;
 } MouseWheelEvent;

@@ -53,6 +53,14 @@ uint8_t list_remove(List* list, void* value) {
     return 1;
 }
 
+void list_clear(List* list) {
+    for (int32_t i = 0; i < list->count; i++) {
+        list->items[i] = NULL;
+    }
+
+    list->count = 0;
+}
+
 void* list_get(List* list, int32_t index) {
     return list->items[index];
 }
@@ -61,7 +69,7 @@ void list_set(List* list, int32_t index, void* value) {
     list->items[index] = value;
 }
 
-int32_t list_index_of(List* list, void* value) {
+int32_t list_index_of(List* list, const void* value) {
     for (int32_t i = 0; i < list->count; i++) {
         if (list->items[i] == value) {
             return i;

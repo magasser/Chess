@@ -5,8 +5,9 @@
 
 #include <engine/layer.h>
 
-typedef struct {
+typedef struct Scene {
     List* layers;
+    void (*update)(struct Scene*);
 } Scene;
 
 #endif

@@ -17,7 +17,9 @@ set(SOURCES
     src/main.c
     src/game.c
     src/board.c
+    src/move.c
     src/ui/layers/game/board_layer.c
+    src/ui/layers/game/hint_layer.c
     src/ui/layers/game/piece_layer.c
     src/ui/scenes/game_scene.c
 )

@@ -49,11 +49,14 @@ int main(void) {
             break;
         }
         // TODO: Check if the loop needs to be reversed
-        //for (int32_t i = 0; i < scene.layers->count; i++) {
-            /*if (layer_handle_event((Layer*)scene.layers->items[i], &event)) {
+        for (int32_t i = 0; i < scene->layers->count; i++) {
+            Layer* layer = (Layer*)list_get(scene->layers, i);
+            if (layer->handle_event(layer, &event)) {
                 break;
-            }*/
-            //}
+            }
+        }
+
+        scene->update(scene);
 
         Color clear_color = { 50, 0, 0, 255 };
         render_begin(renderer, clear_color);

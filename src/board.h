@@ -22,4 +22,7 @@ typedef struct {
 
 void init_board(Board* board);
 
+PieceState* get_piece_on_square(const Board* board, uint8_t rank, uint8_t file);
+uint8_t has_piece_on_square(const Board* board, uint8_t rank, uint8_t file);
+
 #endif

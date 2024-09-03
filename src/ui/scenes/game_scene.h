@@ -7,10 +7,10 @@
 
 typedef struct {
     Scene scene;
-    const Game* game;
+    Game* game;
 } GameScene;
 
-GameScene* create_game_scene(Renderer* renderer, const Game* game);
+GameScene* create_game_scene(Renderer* renderer, Game* game);
 void destroy_game_scene(GameScene* game_scene);
 
 #endif

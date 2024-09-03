@@ -11,6 +11,6 @@ typedef struct {
     const Board* board;
 } BoardLayer;
 
-BoardLayer* create_board_layer(Renderer* renderer, const Board* board);
+BoardLayer* create_board_layer(Renderer* renderer, Board* board);
 
 #endif

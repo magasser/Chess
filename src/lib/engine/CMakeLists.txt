@@ -11,6 +11,7 @@ include_directories(include)
 
 set(ENGINE_SOURCES
     src/renderer.c
+    src/window.c
     src/components/button.c)
 
 if(USE_SDL)

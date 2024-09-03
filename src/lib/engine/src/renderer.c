@@ -28,6 +28,10 @@ void render_layer(Renderer* renderer, Layer* layer) {
 }
 
 void render_object(Renderer* renderer, RenderObject* object) {
+    if (object->disabled) {
+        return;
+    }
+
     switch (object->type) {
     case RENDER_OBJECT_COMPONENT:
         render_component(renderer, (Component*)object);

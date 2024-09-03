@@ -6,10 +6,18 @@
 #include <engine/event.h>
 #include <engine/render_object.h>
 
-typedef struct {
+typedef struct Layer {
     List* objects;
+    uint8_t(*handle_event)(struct Layer*, Event*);
+    void(*update)(struct Layer*);
 } Layer;
 
-uint8_t layer_handle_event(Layer* layer, Event* event);
+static uint8_t layer_handle_event_nop(Layer* layer, Event* event) {
+    return 0;
+}
+
+static void layer_update_nop(Layer* layer) {
+    return;
+}
 
 #endif

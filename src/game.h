@@ -2,14 +2,18 @@
 #define GAME_H
 
 #include "core.h"
-#include "board.h"
+#include "move.h"
 
 typedef struct {
 
 } MenuContext;
 
-typedef struct {
+typedef struct GameContext {
     Board board;
+    Move move;
+    List* moves;
+    void (*move_piece)(struct GameContext*, Move);
+    PieceColor color_turn;
 } GameContext;
 
 typedef struct {

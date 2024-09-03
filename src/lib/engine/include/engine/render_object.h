@@ -14,6 +14,7 @@ typedef struct {
     uint32_t x;
     uint32_t y;
     double angle;
+    uint8_t disabled;
 } RenderObject;
 
 #endif
